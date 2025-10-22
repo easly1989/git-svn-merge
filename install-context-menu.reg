@@ -1,0 +1,25 @@
+Windows Registry Editor Version 5.00
+
+; Git-SVN Merge Context Menu Entry with Validation
+; This adds "Merge Git branch to SVN trunk" option when right-clicking on folders
+; Uses PowerShell script to validate repository before running
+
+; IMPORTANT: Before using this file, edit the paths to match your installation:
+; - Change C:\\Tools\\git-svn-merge\\ to your actual installation path
+; - Make sure both merge_to_svn.py and context-menu-handler.ps1 are in that folder
+
+; Add context menu for directories (right-click on folder)
+[HKEY_CLASSES_ROOT\Directory\shell\GitSvnMerge]
+@="Merge Git branch to SVN trunk"
+"Icon"="C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico"
+
+[HKEY_CLASSES_ROOT\Directory\shell\GitSvnMerge\command]
+@="powershell.exe -ExecutionPolicy Bypass -File \"C:\\Tools\\git-svn-merge\\context-menu-handler.ps1\" -RepositoryPath \"%1\""
+
+; Add context menu for directory background (right-click inside folder)
+[HKEY_CLASSES_ROOT\Directory\Background\shell\GitSvnMerge]
+@="Merge Git branch to SVN trunk (here)"
+"Icon"="C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\GitSvnMerge\command]
+@="powershell.exe -ExecutionPolicy Bypass -File \"C:\\Tools\\git-svn-merge\\context-menu-handler.ps1\" -RepositoryPath \"%V\""

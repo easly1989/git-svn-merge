@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; Uninstall Git-SVN Merge Context Menu Entry
+; This removes the "Merge Git branch to SVN trunk" option from right-click menu
+
+; Remove context menu for directories
+[-HKEY_CLASSES_ROOT\Directory\shell\GitSvnMerge]
+
+; Remove context menu for directory background
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\GitSvnMerge]
